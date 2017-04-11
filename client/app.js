@@ -1,3 +1,3 @@
 
 var app = angular.module("simonApp", []);
-alert("Welcome To Simon!");
+// alert("Welcome To Simon!");

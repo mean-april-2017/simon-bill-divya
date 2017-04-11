@@ -11,10 +11,17 @@
 <body>
     <h1>Simon</h1>
     <div ng-controller='simonController'>
-      <h2 ng-show='!state'>Player 1</h2>
-      <h2 ng-show='state'>Player 2</h2>
+      <h2 ng-show='!state'>{{players[0].name}}</h2>
+      <h2 ng-show='state'>{{players[1].name}}</h2>
+    <form>
+    <span>
+    Player :<input type="text" ng-model='player.name'>
+    <input type="submit" value="Add Player" ng-click='addplayer()'>
+  </span>
+  </form>
+  <br>
+  <br>
       <table>
-
         <tbody>
           <tr>
             <td ng-click="addColor('red')" bgcolor="red">Red</td>
@@ -32,12 +39,24 @@
         var myApp = angular.module('simonApp',[]);
         myApp.controller('simonController', function($scope){
           $scope.pattern = []
+           $scope.players = []
+           $scope.player1 = []
+           $scope.player2 = []
           $scope.addColor = function(color){
             $scope.pattern.push(color)
             color = ""
             console.log($scope.pattern)
+
             $scope.toggle()
             console.log($scope.pattern[$scope.pattern.length-1])
+          }
+          $scope.addplayer = function(){
+            $scope.players.push($scope.player)
+            $scope.player = {}
+            console.log($scope.players[0].name)
+          }
+          $scope.addColor = function(){
+
           }
 
           $scope.toggle = function(){
